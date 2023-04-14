@@ -1,0 +1,12 @@
+<div class="conatiner">
+    <h1>Helyszínlista</h1>
+    <div class="location-conatiner">
+        <mat-list>
+            <mat-list-item *ngFor="let e of dataFromParent" (click)="listClick(e.id)">
+                <mat-icon matListItemIcon>landscape</mat-icon>
+                <span matListItemTitle>{{e.name}}</span>
+                <span matListItemLine>{{e.location}}</span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>
