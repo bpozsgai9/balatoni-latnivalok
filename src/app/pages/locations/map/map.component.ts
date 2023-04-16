@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MapService } from '../../../shared/services/map.service'
-import { take } from 'rxjs';
+import { Observable, Subscription, first } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -12,6 +12,9 @@ export class MapComponent implements OnInit, OnDestroy {
   
   @Input() dataFromParent: any;
   sendedId:number = 1;
+  
+  mapSubscription?: Subscription;
+  mapObservation?: Observable<number>;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -19,20 +22,24 @@ export class MapComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     
-    //https://www.openstreetmap.org/search?query=Béke-sztúpa#map=17/47.96352/19.74543
     //TODO: hibát dob
-    const sub = this.mapService.currentData.subscribe((data: number) => {
-      this.sendedId = data;
-    })
+    this.mapObservation = this.mapService.currentData;
+    this.mapSubscription = this.mapObservation
+      .subscribe({
+        next: (data: number) => {
+          this.sendedId = data;
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
   }
 
   ngOnDestroy(): void {
-    
+    this.mapSubscription?.unsubscribe();
   }
 
   sanitizedURL() {
-
-    console.log(this.sendedId);
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.dataFromParent[this.sendedId].embedMapUrl);
   }
 }

@@ -1,19 +1,33 @@
+mat-list-item:hover {
+    background-color: orangered;
+}
+
+mat-list-item {
+    background-color: orange;
+}
+
+mat-list {
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 100vh;
+    background-color: orange;
+    border-radius: 2%;
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     font-family: "Rockwell";
+    color: orange;
+    text-decoration: underline;
+}
+
+span {
+    text-decoration: none;
 }
 
 .conatiner {
     margin: 20px;
     padding: 20px;
-    color: orange;
-    text-decoration: underline;
-    
-}
-
-.location-conatiner {
-    background-color: orange;
-    padding: 10px;
-    overflow-y: scroll;
-    max-height: 100vh;
 }
 
