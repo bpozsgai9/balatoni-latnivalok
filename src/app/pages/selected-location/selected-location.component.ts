@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocationService } from 'src/app/shared/services/location.service';
 
 @Component({
   selector: 'app-selected-location',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./selected-location.component.scss']
 })
 export class SelectedLocationComponent {
-
+  
+  data = this.locationService.getAll();
+  
+  constructor(private locationService: LocationService) {}
 }
