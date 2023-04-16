@@ -18,7 +18,7 @@
                 <input matInput type="password" [formControl]="password" />
             </mat-form-field>
             <span>
-                <button mat-raised-button color="primary">Login</button><br />
+                <button mat-raised-button color="primary" (click)="login()">Login</button><br />
                 <button mat-raised-button color="warn" [routerLink]="'/register'">Register</button>
             </span>
         </div>

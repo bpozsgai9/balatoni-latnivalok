@@ -6,7 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class MapService {
 
-  private data = new BehaviorSubject(1)
+  private data = new BehaviorSubject(0)
   currentData = this.data.asObservable();
 
   constructor() { }

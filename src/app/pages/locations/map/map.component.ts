@@ -11,7 +11,7 @@ import { Observable, Subscription, first } from 'rxjs';
 export class MapComponent implements OnInit, OnDestroy {
   
   @Input() dataFromParent: any;
-  sendedId:number = 1;
+  sendedId:number = 0;
   
   mapSubscription?: Subscription;
   mapObservation?: Observable<number>;
