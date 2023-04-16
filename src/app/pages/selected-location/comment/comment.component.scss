@@ -1,0 +1,49 @@
+$lightBlue: #60C6D2;
+$middleBlue: #0081C9;
+
+div {
+    margin: 0;
+    padding: 30px;
+}
+
+h1 {
+    font-family: 'Rockwell';
+    text-decoration: underline;
+    color: $lightBlue;
+}
+
+mat-list {
+    border-radius: 10px;
+}
+
+mat-list-item {
+    margin-bottom: 10px;
+}
+
+mat-form-field {
+    margin-top: 20px;
+    width: 70%;
+}
+
+button {
+    margin-top: 10px;
+    margin-left: 20px;
+    
+}
+
+.comment-container {
+    background-color: $middleBlue;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 20px;
+}
+
+.comment {
+    font-size: 20px;
+}
+
+.date {
+    font-size: 13px;
+}

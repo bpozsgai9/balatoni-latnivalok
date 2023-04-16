@@ -1,1 +1,23 @@
-<p>comment works!</p>
+<div>
+    <h1>Kommentek</h1>
+    <div class="comment-container">
+        <mat-list>
+            <mat-list-item *ngFor="let comment of getExistingComments()">
+                <mat-icon matListItemIcon>account_circle</mat-icon>
+                <h3 class="name" matListItemTitle>{{ comment.email.split('@')[0] }}</h3>
+                <p matListItemLine>
+                    <span class="comment">{{ comment.comment }}</span>
+                    <br/>
+                    <span class="date">{{ comment.date | dateFormat }}</span>
+                </p>
+            </mat-list-item>
+        </mat-list>
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Kommentelj ide...</mat-label>
+            <input matInput placeholder="...">
+        </mat-form-field>
+        <button mat-fab color="accent">
+            <mat-icon>check_circle</mat-icon>
+        </button>
+    </div>
+</div>

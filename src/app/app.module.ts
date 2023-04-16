@@ -25,10 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './shared/header/header.component';
-
-
-
-
+import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +42,8 @@ import { HeaderComponent } from './shared/header/header.component';
     ViewerComponent,
     MenuComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
