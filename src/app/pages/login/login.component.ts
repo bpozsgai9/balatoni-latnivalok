@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../shared/services/user.service';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +12,24 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   
   loading = false;
-  email = new FormControl('');
-  password = new FormControl('');
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UserService) {}
   
-  login() {
-    this.router.navigateByUrl('/main');
+  loginUser() {
+
+    const user: User = this.userService.getUserByEmailAndPassword(
+      this.loginForm.get('email')?.value as string,
+      this.loginForm.get('password')?.value as string
+    )
+    
+    if(user != undefined || user != null) {
+      this.router.navigateByUrl('/main');
+    }
   }
 }

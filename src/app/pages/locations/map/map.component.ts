@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MapService } from '../../../shared/services/map.service'
-import { Observable, Subscription, first } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -11,10 +11,10 @@ import { Observable, Subscription, first } from 'rxjs';
 export class MapComponent implements OnInit, OnDestroy {
   
   @Input() dataFromParent: any;
-  sendedId:number = 0;
+  sendedId:string = '0';
   
   mapSubscription?: Subscription;
-  mapObservation?: Observable<number>;
+  mapObservation?: Observable<string>;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -22,11 +22,10 @@ export class MapComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     
-    //TODO: hibát dob
     this.mapObservation = this.mapService.currentData;
     this.mapSubscription = this.mapObservation
       .subscribe({
-        next: (data: number) => {
+        next: (data: string) => {
           this.sendedId = data;
         },
         error: (error) => {

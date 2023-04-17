@@ -1,7 +1,7 @@
 export interface Comment {
-    id: number;
+    id: string;
     email: string;
     comment: string;
     date: number;
-    locationId: number;
+    locationId: string;
 }

@@ -6,12 +6,12 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class MapService {
 
-  private data = new BehaviorSubject(0)
+  private data = new BehaviorSubject('0')
   currentData = this.data.asObservable();
 
   constructor() { }
 
-  setData(data: number) {
+  setData(data: string) {
     this.data.next(data);
   }
 }

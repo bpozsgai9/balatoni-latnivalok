@@ -10,18 +10,20 @@
             <span class="emojis">🏖️⛵🌊</span>
             <br />
             <br />
-            <mat-form-field color="warn">
-                <mat-label for="email">Email: </mat-label>
-                <input matInput type="text" [formControl]="email" />
-            </mat-form-field>
-            <mat-form-field color="warn">
-                <mat-label for="password">Password: </mat-label>
-                <input matInput type="password" [formControl]="password" />
-            </mat-form-field>
-            <span>
-                <button mat-raised-button color="warn" (click)="register()">Register</button>
-                <button mat-raised-button color="accent" [routerLink]="'/login'">Back</button>
-            </span>
+            <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                <mat-form-field color="warn">
+                    <mat-label for="email">Email: </mat-label>
+                    <input matInput type="text" formControlName="email"/>
+                </mat-form-field>
+                <mat-form-field color="warn">
+                    <mat-label for="password">Password: </mat-label>
+                    <input matInput type="password" formControlName="password"/>
+                </mat-form-field>
+                <span>
+                    <button mat-raised-button color="warn" type="submit">Register</button>
+                    <button mat-raised-button color="accent" [routerLink]="'/login'">Back</button>
+                </span>
+            </form>
         </div>
     </div>
 </div>

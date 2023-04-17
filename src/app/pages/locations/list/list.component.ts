@@ -15,11 +15,11 @@ export class ListComponent {
     private mapService: MapService,
     private router: Router) {}
 
-  listClick(id: number) {
+  listClick(id: string) {
     this.mapService.setData(id);
   }
 
-  navigateToElement(id: number) {
+  navigateToElement(id: string) {
     this.router.navigateByUrl('/location/' + id);
   }
 }

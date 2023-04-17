@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewerComponent implements OnInit {
 
   @Input() dataFromParent: any;
-  id: number = 0;
+  id: string = '0';
 
   constructor(private route: ActivatedRoute) {}
 

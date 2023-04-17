@@ -12,12 +12,14 @@
                 </p>
             </mat-list-item>
         </mat-list>
-        <mat-form-field appearance="outline" color="accent">
-            <mat-label>Kommentelj ide...</mat-label>
-            <input matInput placeholder="...">
-        </mat-form-field>
-        <button mat-fab color="accent">
-            <mat-icon>check_circle</mat-icon>
-        </button>
+        <form [formGroup]="commentsForm" (ngSubmit)="addComment()">
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label for="comment">Kommentelj ide...</mat-label>
+                <textarea matInput rows="2" type="text" formControlName="comment"></textarea>
+            </mat-form-field>
+            <button mat-fab color="accent" type="submit">
+                <mat-icon>check_circle</mat-icon>
+            </button>
+        </form>
     </div>
 </div>
