@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
-import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-register',
@@ -23,14 +22,19 @@ export class RegisterComponent {
 
   registerUser() {
     
-    //1
-    this.userService.create({
-      id: '',
-      email: this.registerForm.get('email')?.value,
-      username: this.registerForm.get('email')?.value?.split('@')[0]
-    } as User);
+    this.userService.register(
+      this.registerForm.get('email')?.value as string,
+      this.registerForm.get('password')?.value as string
+      ).then(cred => {
 
-    //2
-    this.router.navigateByUrl('/login');
+        console.log(cred);
+        this.router.navigateByUrl('/login');
+        this.loading = false;
+
+      }).catch(err => {
+
+        console.error(err);
+        this.loading = false;
+      })
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,21 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UserService) {}
 
   logout() {
-    this.router.navigateByUrl('/login');
+
+    this.userService.logout()
+    .then(() => {
+
+      console.log('Logged out succesful!');
+      this.router.navigateByUrl('/login');
+
+    }).catch(err => {
+
+      console.error(err);
+    })
   }
 }

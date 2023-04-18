@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfejl-beadando-2023": {
+      "hosting": {
+        "balatoni-latnivalok": [
+          "webfejl-beadando-2023"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfejl-beadando-2023"
+  }
+}

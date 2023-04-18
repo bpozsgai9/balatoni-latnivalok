@@ -23,13 +23,20 @@ export class LoginComponent {
   
   loginUser() {
 
-    const user: User = this.userService.getUserByEmailAndPassword(
+    this.userService.login(
       this.loginForm.get('email')?.value as string,
       this.loginForm.get('password')?.value as string
-    )
-    
-    if(user != undefined || user != null) {
+    ).then(cred => {
+
+      console.log(cred);
       this.router.navigateByUrl('/main');
-    }
+      this.loading = false;
+    }).catch(err => {
+      console.error(err);
+      this.loading = false;
+    })
+    
+    
+    
   }
 }
