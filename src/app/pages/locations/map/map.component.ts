@@ -1,44 +1,30 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MapService } from '../../../shared/services/map.service'
 import { Observable, Subscription } from 'rxjs';
+import { Location } from 'src/app/shared/models/location';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent {
   
-  @Input() dataFromParent: any;
-  sendedId:string = '0';
-  
-  mapSubscription?: Subscription;
-  mapObservation?: Observable<string>;
+  @Input() dataFromParent?: Array<Location>;
+  @Input() chosenMapId?: string;
 
   constructor(
-    private sanitizer: DomSanitizer,
-    private mapService: MapService) {}
-  
-  ngOnInit(): void {
-    
-    this.mapObservation = this.mapService.currentData;
-    this.mapSubscription = this.mapObservation
-      .subscribe({
-        next: (data: string) => {
-          this.sendedId = data;
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.mapSubscription?.unsubscribe();
-  }
+    private sanitizer: DomSanitizer) {}
 
   sanitizedURL() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.dataFromParent[this.sendedId].embedMapUrl);
+    
+    if (this.dataFromParent && this.chosenMapId) {
+      
+      const selectedUrl = 
+        this.dataFromParent.filter(e => e.id == this.chosenMapId)[0].embedMapUrl
+      return this.sanitizer.bypassSecurityTrustResourceUrl(selectedUrl);
+
+    }
+    return "";
   }
 }

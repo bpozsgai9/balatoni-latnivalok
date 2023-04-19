@@ -1,5 +1,7 @@
 <span>
-    <app-list [dataFromParent]="data"></app-list>
-    <app-map [dataFromParent]="data"></app-map>
+    <ng-container *ngIf="data">
+        <app-list [dataFromParent]="data" (clickedIdEmmitter)="loadClickedId($event)"></app-list>
+        <app-map [dataFromParent]="data" [chosenMapId]="chosenId"></app-map>
+    </ng-container>
 </span>
 

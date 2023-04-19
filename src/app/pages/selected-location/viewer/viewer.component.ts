@@ -9,30 +9,42 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewerComponent implements OnInit {
 
   @Input() dataFromParent: any;
-  id: string = '0';
+  id?: string;
 
   constructor(private route: ActivatedRoute) {}
 
+  //TODO: nem tölti be!
   ngOnInit() {
-
     this.route.params.subscribe(params =>{
         this.id = params['id'];
     })
   }
 
   getName() {
-    return this.dataFromParent[this.id].name;
+    if (this.dataFromParent) {
+      return this.dataFromParent[this.id].name;
+    }
+    return 'Unknown';
   }
 
   getLocation() {
-    return this.dataFromParent[this.id].location;
+    if (this.dataFromParent) {
+      return this.dataFromParent[this.id].location;
+    }
+    return 'Unknown';
   }
 
   getDescription() {
-    return this.dataFromParent[this.id].description;
+    if (this.dataFromParent) {
+      return this.dataFromParent[this.id].description;
+    }
+    return 'Unknown';
   }
 
   getImg() {
-    return "assets/" + this.dataFromParent[this.id].img;
+    if (this.dataFromParent) {
+      return this.dataFromParent[this.id].img;
+    }
+    return 'Unknown';
   }
 }

@@ -31,12 +31,11 @@ export class LoginComponent {
       console.log(cred);
       this.router.navigateByUrl('/main');
       this.loading = false;
+
     }).catch(err => {
+
       console.error(err);
       this.loading = false;
     })
-    
-    
-    
   }
 }

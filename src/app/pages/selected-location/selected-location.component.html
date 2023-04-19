@@ -1,5 +1,7 @@
 <span>
     <app-header></app-header>
-    <app-comment [dataFromParent]="data"></app-comment>
-    <app-viewer [dataFromParent]="data"></app-viewer>
+    <ng-container *ngIf="data">
+        <app-comment [dataFromParent]="data"></app-comment>
+        <app-viewer [dataFromParent]="data"></app-viewer>
+    </ng-container>
 </span>

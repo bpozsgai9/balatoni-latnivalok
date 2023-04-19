@@ -74,7 +74,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     provideStorage(() => getStorage())
     
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

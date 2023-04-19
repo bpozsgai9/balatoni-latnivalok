@@ -1,6 +1,9 @@
-<div class="map">
-    <iframe 
-        frameborder="0"
-        scrolling="no"
-        [src]="sanitizedURL()"></iframe>
-</div>
+<ng-container *ngIf="dataFromParent && chosenMapId">
+    <div class="map">
+        <iframe 
+            frameborder="0"
+            scrolling="no"
+            [src]="sanitizedURL()"></iframe>
+    </div>
+</ng-container>
+
