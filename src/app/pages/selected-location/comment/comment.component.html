@@ -2,7 +2,7 @@
     <h1>Kommentek</h1>
     <div class="comment-container">
         <mat-list>
-            <mat-list-item *ngFor="let comment of getExistingComments()">
+            <mat-list-item *ngFor="let comment of existingComments">
                 <mat-icon matListItemIcon>account_circle</mat-icon>
                 <h3 class="name" matListItemTitle>{{ comment.email.split('@')[0] }}</h3>
                 <p matListItemLine>

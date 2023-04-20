@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Comment } from '../models/comment';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,50 +8,34 @@ import { Comment } from '../models/comment';
 
 export class CommentService {
 
-  constructor() { }
+  collectionName = 'Comments';
 
-  data: Array<Comment> = Array(
-    {
-      id: '0',
-      email: 'kukac@ku.ku',
-      comment: 'Imádtam ezt a helyet!',
-      date: 1681306012049,
-      locationId: '0'
-    },
-    {
-      id: '1',
-      email: 'kukac@ku.ku',
-      comment: 'A nyáron voltunk itt!',
-      date: 1681239490589,
-      locationId: '0'
-    },
-    {
-      id: '2',
-      email: 'kukac@ku.ku',
-      comment: 'Itt még nem voltam.',
-      date: 0,
-      locationId: '1'
-    },
-  );
-
-  getAll() {
-    return this.data;
-  }
-
-  getCommentsByLocationId(id: string) {
-    return this.data.filter(obj => obj.locationId == id).sort();
-  }
+  constructor(
+    private afs: AngularFirestore) { }
 
   create(comment: Comment) {
+    
+    comment.id = this.afs.createId();
+    return this.afs.collection<Comment>(this.collectionName).doc(comment.id).set(comment);
+  }
 
-    console.log(comment)
+  getAll() {
+    return this.afs.collection<Comment>(this.collectionName).valueChanges();
   }
 
   update(comment: Comment) {
-
+    return this.afs.collection<Comment>(this.collectionName).doc(comment.id).set(comment);
   }
 
   delete(id: string) {
+    return this.afs.collection<Comment>(this.collectionName).doc(id).delete();
+  }
 
+  getCommentsByLocationId(id: string) {
+    
+    return this.afs.collection<Comment>(
+      this.collectionName,
+      ref => ref.where('locationId', '==', id).orderBy('date', 'asc')
+      ).valueChanges();
   }
 }

@@ -37,12 +37,18 @@ export class UserService {
   }
 
   getAll() {
-
+    return this.afs.collection<User>(this.collectionName).valueChanges();
   }
 
-  getUserById(id: number) {}
+  getUserById(id: string) {
+    return this.afs.collection<User>(this.collectionName).doc(id).valueChanges();
+  }
 
-  update(user: User) {}
+  update(user: User) {
+    return this.afs.collection<User>(this.collectionName).doc(user.id).set(user);
+  }
 
-  delete(id: number) {}
+  delete(id: string) {
+    return this.afs.collection<User>(this.collectionName).doc(id).delete();
+  }
 }

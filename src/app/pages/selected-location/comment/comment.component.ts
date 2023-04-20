@@ -3,6 +3,7 @@ import { CommentService } from '../../../shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Comment } from 'src/app/shared/models/comment';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-comment',
@@ -11,39 +12,49 @@ import { Comment } from 'src/app/shared/models/comment';
 })
 export class CommentComponent implements OnInit, OnChanges {
   
-  @Input() dataFromParent: any;
-  id: string = '0';
+  locationId?: string;
   commentsForm = new FormGroup({
     comment: new FormControl('')
   });
+  existingComments?: Array<Comment>;
   
   constructor(
     private commentService: CommentService,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private auth: AngularFireAuth) {}
 
   ngOnInit() {
 
     this.route.params.subscribe(params =>{
-        this.id = params['id'] as string;
+        this.locationId = params['id'] as string;
+    })
+
+    this.commentService.getCommentsByLocationId(this.locationId as string).subscribe(comments => {
+      this.existingComments = comments;
     })
   }
 
   ngOnChanges() {
-    //TODO: kommentek frissítése, observable-vel
-  }
-
-  getExistingComments() {
-    return this.commentService.getCommentsByLocationId(this.id);
+    this.commentService.getCommentsByLocationId(this.locationId as string).subscribe(comments => {
+      this.existingComments = comments;
+    })
   }
 
   addComment() {
 
     this.commentService.create({
-      id: 'id',
-      email: 'example@ex.ex',
+      id: '',
+      email: localStorage.getItem('userEmail'),
       comment: this.commentsForm.get('comment')?.value,
       date: new Date().getTime(),
-      locationId: 'obj.locationId',
-    } as Comment)
+      locationId: this.locationId
+
+    } as Comment).then(_ => {
+
+    }).catch(error => {
+
+      console.error(error);
+
+    })
   }
 }

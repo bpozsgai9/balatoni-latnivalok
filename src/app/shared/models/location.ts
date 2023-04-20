@@ -3,5 +3,6 @@ export interface Location {
     name: string;
     location: string;
     description: string;
+    img: string;
     embedMapUrl: string;
 }
