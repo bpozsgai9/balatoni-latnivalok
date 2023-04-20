@@ -16,7 +16,8 @@ export class LocationService {
 
   getAll() {
     console.log('Service called!');
-    return this.afs.collection<Location>(this.collectionName).valueChanges();
+    return this.afs.collection<Location>(this.collectionName, ref => ref.orderBy('name', 'asc').limit(20)
+    ).valueChanges();
   }
 
   getImagesFromStorage(imageUrl: string) {

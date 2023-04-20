@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './pages/login/login.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,12 +25,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +57,6 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatIconModule,
-    MatSidenavModule,
     MatListModule,
     MatToolbarModule,
     MatFormFieldModule,
@@ -67,6 +66,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

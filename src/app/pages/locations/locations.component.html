@@ -1,7 +1,11 @@
-<span class="conatiner">
+<span>
     <ng-container *ngIf="data">
         <app-list [dataFromParent]="data" (clickedIdEmmitter)="loadClickedId($event)"></app-list>
         <app-map [dataFromParent]="data" [chosenMapId]="chosenId"></app-map>
     </ng-container>
 </span>
+<span>
+    <img src="./../../../assets/balatonpart.PNG">
+</span>
+
 

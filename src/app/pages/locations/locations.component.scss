@@ -8,8 +8,14 @@ app-map {
     float: right;
 }
 
-.container {
-    background-image: url('./../../../assets/balatonpart.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    object-fit: cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
 }
