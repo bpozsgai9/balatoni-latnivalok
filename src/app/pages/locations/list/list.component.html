@@ -1,14 +1,12 @@
 <div class="conatiner">
     <h1>Helyszínlista</h1>
-    <div class="location-conatiner">
-        <mat-nav-list>
-            <mat-list-item *ngFor="let e of dataFromParent" (click)="listClick(e.id)">
-                <span matListItemTitle>{{e.name}}</span>
-                <span matListItemLine>{{e.location}}</span>
-                <button mat-icon-button (click)="navigateToElement(e.id)" matListItemMeta>
-                    <mat-icon>visibility</mat-icon>
-                </button>
-            </mat-list-item>
-        </mat-nav-list>
-    </div>
+    <mat-nav-list>
+        <mat-list-item *ngFor="let e of dataFromParent" (click)="listClick(e.id)">
+            <span matListItemTitle>{{e.name}}</span>
+            <span matListItemLine>{{e.location}}</span>
+            <button mat-icon-button (click)="navigateToElement(e.id)" matListItemMeta>
+                <mat-icon>visibility</mat-icon>
+            </button>
+        </mat-list-item>
+    </mat-nav-list>
 </div>
