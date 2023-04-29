@@ -12,9 +12,11 @@
                         <button class="deleteButton" mat-icon-button color="accent" (click)="deleteComment(comment.id)">
                             <mat-icon>delete</mat-icon>
                         </button>
+                        <button class="updateButton" mat-icon-button color="accent" (click)="updateComment(comment.id)">
+                            <mat-icon>update</mat-icon>
+                        </button>
                     </span>
                 </span>
-                
             </mat-list-item>
         </mat-list>
         <form [formGroup]="commentsForm" (ngSubmit)="addComment()">

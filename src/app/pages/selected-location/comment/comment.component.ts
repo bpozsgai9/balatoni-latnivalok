@@ -3,7 +3,6 @@ import { CommentService } from '../../../shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Comment } from 'src/app/shared/models/comment';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-comment',
@@ -19,15 +18,10 @@ export class CommentComponent implements OnInit, OnChanges {
   commentsForm = new FormGroup({
     comment: new FormControl('')
   });
-
-  deleteForm = new FormGroup({
-    commentId: new FormControl('')
-  });
   
   constructor(
     private commentService: CommentService,
-    private route: ActivatedRoute,
-    private auth: AngularFireAuth) {}
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
 
@@ -48,20 +42,25 @@ export class CommentComponent implements OnInit, OnChanges {
 
   addComment() {
 
-    this.commentService.create({
-      id: '',
-      email: localStorage.getItem('userEmail'),
-      comment: this.commentsForm.get('comment')?.value,
-      date: new Date().getTime(),
-      locationId: this.locationId
-
-    } as Comment).then(_ => {
-
-    }).catch(error => {
-
-      console.error(error);
-
-    })
+    if (this.commentsForm.get('comment')?.value != null && 
+    this.commentsForm.get('comment')?.value != '') {
+      this.commentService.create({
+        id: '',
+        email: localStorage.getItem('userEmail'),
+        comment: this.commentsForm.get('comment')?.value,
+        date: new Date().getTime(),
+        locationId: this.locationId
+  
+      } as Comment).then(_ => {
+        this.commentsForm.get('comment')?.setValue('');
+      }).catch(error => {
+  
+        console.error(error);
+  
+      })
+    } else {
+      alert('A kommentmezőt nem hagyhatod üresen!');
+    }
   }
 
   deleteComment(commentId: string) {
@@ -70,24 +69,27 @@ export class CommentComponent implements OnInit, OnChanges {
 
   updateComment(commentId: string) {
 
-    this.commentsForm.get('comment')?.setValue('Írd ide az új kommentet amire módosítani szeretnéd a régit...');
-    
+    let newComment = prompt('Új komment: ');
+    if (newComment != null && newComment != '') {
+      
+      alert('Biztos megváltoztatod az általad kiválasztott kommentet, a következő tartalomra? \n"' + newComment + '"')
 
-    /*
-    this.commentService.update({
-      id: commentId,
-      email: localStorage.getItem('userEmail'),
-      comment: this.commentsForm.get('comment')?.value,
-      date: new Date().getTime(),
-      locationId: this.locationId
-
-    } as Comment).then(_ => {
-
-    }).catch(error => {
-
-      console.error(error);
-
-    })
-    */
+      this.commentService.update({
+        id: commentId,
+        email: localStorage.getItem('userEmail'),
+        comment: newComment,
+        date: new Date().getTime(),
+        locationId: this.locationId
+  
+      } as Comment).then(_ => {
+  
+      }).catch(error => {
+  
+        console.error(error);
+  
+      })
+    } else {
+      alert('A kommentmezőt nem hagyhatod üresen!');
+    }
   }
 }
