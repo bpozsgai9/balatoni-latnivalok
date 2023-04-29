@@ -10,7 +10,7 @@ Mielőtt fellépsz az oldalra a következőeket érdemes tudnod!
 
 **2. Bejelentkezés után kapsz egy általános tájékoztatót ami a következőket foglalja össze:** <br>
   - A főoldal 3 nagy egységre van osztva (fejléc, helyszín lista, térkép)
-  - A fejlécről visszanavigálhasz a főoldalra, illetve kijelentkezni tudsz
+  - A fejlécről visszanavigálhasz a főoldalra (🏠 ikon), illetve kijelentkezni tudsz (`[->` ikon)
   - A helyszínlista helyszínnevet és helyszínt tartlamaz illetve egy szem ikont (👁️) ezzel tudsz átnavigáli a kiválasztott helyszínre
   - A térkép egy interaktiv OpenStreetMap térkép (hasonló mint a Google Map), ezen böngészni tudsz
   
