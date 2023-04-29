@@ -30,14 +30,20 @@ export class LocationsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    alert('Üdvözöllek a BALATONE - Balatoni Látnivalók oldalán!\n\n' + 
-    '🏖️⛵🌊\n\n' +
-    'Mielőtt betölt az oldal, érdemes tudnod pár információt!\n\n' + 
-    'Az főoldal két hasábra lesz osztva.\nBal oldalt egy helyszínlistát fogsz látni nevekkel ellátva és egy szem ikonnal (👁️).\n' +
-    'Az ikonra való kattintással tudsz átnavigálni a helyszínhez tartozó részletekre.\n' + 
-    'Ezeken a helyszíneken több információt is megtudhatsz az adott balatoni csodáról, illetve van lehetőséged:\n\b- kommentelni\n\b- kommentet törölni\n\b- módosítani is azt!\n\n' + 
-    'Jobb oldalt pedig egy OpenStreetMap térképet.\nEz egy Google Map-hez hasonló ingyenes interaktív térkép, ez megjeleníti az adott helyszínt.\n\n' + 'Kellemes böngészést és szuper nyarat!\n\n' +
-    '☀️😎👙');
+
+    let isMessageDelivered = localStorage.getItem('isMessageDelivered') == 'true';
+
+    if (!isMessageDelivered) {
+      alert('Üdvözöllek a BALATONE - Balatoni Látnivalók oldalán!\n\n' + 
+        '🏖️⛵🌊\n\n' +
+        'Mielőtt betölt az oldal, érdemes tudnod pár információt!\n\n' + 
+        'Az főoldal két hasábra lesz osztva.\nBal oldalt egy helyszínlistát fogsz látni nevekkel ellátva és egy szem ikonnal (👁️).\n' +
+        'Az ikonra való kattintással tudsz átnavigálni a helyszínhez tartozó részletekre.\n' + 
+        'Ezeken a helyszíneken több információt is megtudhatsz az adott balatoni csodáról, illetve van lehetőséged:\n\b- kommentelni\n\b- kommentet törölni\n\b- módosítani is azt!\n\n' + 
+        'Jobb oldalt pedig egy OpenStreetMap térképet.\nEz egy Google Map-hez hasonló ingyenes interaktív térkép, ez megjeleníti az adott helyszínt.\n\n' + 'Kellemes böngészést és szuper nyarat!\n\n' +
+        '☀️😎👙');
+        localStorage.setItem('isMessageDelivered', 'true');
+    }
   }
 
   loadClickedId(clickedId: string) {

@@ -29,6 +29,7 @@ export class LoginComponent {
 
       console.log(cred);
       localStorage.setItem('userEmail', this.loginForm.get('email')?.value as string);
+      localStorage.setItem('isMessageDelivered', 'false');
       this.router.navigateByUrl('/main');
       this.loading = false;
 
