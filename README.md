@@ -1,27 +1,58 @@
-# BalatoniLatnivalok
+# BALATONE - Balatoni Látnivalók Applikáció
+## SZTE Webfejlesztési Keretrendszerek Nagy Beadandó 2023.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+**Általános leírás:**
 
-## Development server
+Mielőtt fellépsz az oldalra a következőeket érdemes tudnod!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+A projekt komponens hierarchiája a következő:
+```mermaid
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    graph TD;
+    login;
+    register;
 
-## Build
+    main-->locations;
+    main-->header;
+    header-->menu;
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    locations-->list;
+    locations-->map;
 
-## Running unit tests
+    selectedLocation-->comment;
+    selectedLocation-->viewer;
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<br>
 
-## Running end-to-end tests
+**Hosting URL:**
+- https://webfejl-beadando-2023.web.app
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<br>
 
-## Further help
+**Pontozás:**
+| FELADAT | SAJÁT ÉRTÉKELÉS	| PONTSZÁM |
+| :--- | :---: | :---: |
+| Fordítási hiba nincs	| ✔️ | 1 |
+| Futtatási hiba nincs	| ✔️ | 1 |
+| Firebase Hosting URL (létezik, és minden végpont megfelelő módon betöltődik)	|✔️|	1 |
+| Adatmodell definiálása (legalább 4 TypeScript interfész vagy class formájában (ugyanennyi kollekció))	| 3 DB |	1,5 |
+| Alkalmazás felbontása megfelelő számú komponensre (egyetlen komponens TS és HTML kódja sem haladja meg a 250 sort és soronként a 400 karaktert)	|✔️|	1 |
+| Reszponzív, mobile-first felület (minden adat látható és jól jelenik meg böngészőben is, mobil nézetben is)	|❌|	0 |
+| Legalább 2 különböző attribútum direktíva használata	|✔️|	1 |
+| Legalább 2 különböző strukturális direktíva használata	|✔️|	1 |
+| Adatátadás szülő és gyermek komponensek között (legalább 1 @Input és 1 @Output)	|✔️|	1 |
+| Legalább 10 különböző Material elem helyes használata.	|✔️|	5 |
+| Adatbevitel Angular form-ok segítségével megvalósítva (legalább 2)	|✔️|	2 |
+| Legalább 1 saját Pipe osztály írása és használata	|✔️|	2 |
+| Legalább 2 különböző Lifecycle Hook használata a teljes projektben (értelmes tartalommal, nem üresen)	|✔️|	1 |
+| CRUD műveletek mindegyike megvalósult (Promise, Observable használattal)	|✔️|	4 |
+| CRUD műveletek service-ekbe vannak kiszervezve és megfelelő módon injektálva lettek	|✔️|	1 |
+| Firestore adatbázis használata az adatokhoz (integráció, környezeti változók használata helyes legyen)	|✔️|	1 |
+| Legalább 2 komplex Firestore lekérdezés megvalósítása (ide tartoznak: where feltétel, rendezés, léptetés, limitálás)	| ✔️|	4 |
+| Legalább 4 különböző route a különböző oldalak eléréséhez	|✔️|	1 |
+| Legalább 2 route levédése azonosítással (AuthGuard) (ahol ennek értelme van, pl.: egy fórum témakör megtekinthető bárki számára, de a regisztrált felhasználó adatai nem)	|✔️|	2 |
+| Szubjektív pontozás a projekt egészére vonatkozólag (mennyire fedi le a projekt a témakört (mennyire kapcsolódik hozzá), mennyi lehet a befektetett energia a projektben)	|🏖️⛵🌊|	5 |
+| **Összpontszám** | ∑ | 40 / 35,5 |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
