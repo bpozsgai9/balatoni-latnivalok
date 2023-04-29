@@ -13,10 +13,16 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class CommentComponent implements OnInit, OnChanges {
   
   locationId?: string;
+
+  existingComments?: Array<Comment>;
+
   commentsForm = new FormGroup({
     comment: new FormControl('')
   });
-  existingComments?: Array<Comment>;
+
+  deleteForm = new FormGroup({
+    commentId: new FormControl('')
+  });
   
   constructor(
     private commentService: CommentService,
@@ -56,5 +62,32 @@ export class CommentComponent implements OnInit, OnChanges {
       console.error(error);
 
     })
+  }
+
+  deleteComment(commentId: string) {
+    this.commentService.delete(commentId);
+  }
+
+  updateComment(commentId: string) {
+
+    this.commentsForm.get('comment')?.setValue('Írd ide az új kommentet amire módosítani szeretnéd a régit...');
+    
+
+    /*
+    this.commentService.update({
+      id: commentId,
+      email: localStorage.getItem('userEmail'),
+      comment: this.commentsForm.get('comment')?.value,
+      date: new Date().getTime(),
+      locationId: this.locationId
+
+    } as Comment).then(_ => {
+
+    }).catch(error => {
+
+      console.error(error);
+
+    })
+    */
   }
 }

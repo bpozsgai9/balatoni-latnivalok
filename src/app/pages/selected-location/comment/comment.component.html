@@ -4,12 +4,17 @@
         <mat-list>
             <mat-list-item *ngFor="let comment of existingComments">
                 <mat-icon matListItemIcon>account_circle</mat-icon>
-                <h3 class="name" matListItemTitle>{{ comment.email.split('@')[0] }}</h3>
-                <p matListItemLine>
-                    <span class="comment">{{ comment.comment }}</span>
-                    <br/>
-                    <span class="date">{{ comment.date | dateFormat }}</span>
-                </p>
+                <span class="comment-bc">
+                    <span class="name">{{ comment.email.split('@')[0] }}</span>
+                    <span matListItemLine class="comment">{{ comment.comment }}</span>
+                    <span class="date" matListItemLine>{{ comment.date | dateFormat }}</span>
+                    <span matListItemLine>
+                        <button class="deleteButton" mat-icon-button color="accent" (click)="deleteComment(comment.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </span>
+                </span>
+                
             </mat-list-item>
         </mat-list>
         <form [formGroup]="commentsForm" (ngSubmit)="addComment()">
@@ -17,7 +22,7 @@
                 <mat-label for="comment">Kommentelj ide...</mat-label>
                 <textarea matInput rows="2" type="text" formControlName="comment"></textarea>
             </mat-form-field>
-            <button mat-fab color="accent" type="submit">
+            <button class="addButton" mat-fab color="accent" type="submit">
                 <mat-icon>check_circle</mat-icon>
             </button>
         </form>
