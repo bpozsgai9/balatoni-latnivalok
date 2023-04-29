@@ -57,7 +57,7 @@ graph TD;
 | Fordítási hiba nincs	| ✔️ | 1 |
 | Futtatási hiba nincs	| ✔️ | 1 |
 | Firebase Hosting URL (létezik, és minden végpont megfelelő módon betöltődik)	|✔️|	1 |
-| Adatmodell definiálása | 3 DB |	1,5 |
+| Adatmodell definiálása | 4 DB |	2 |
 | Alkalmazás felbontása megfelelő számú komponensre (egyetlen komponens TS és HTML kódja sem haladja meg a 250 sort és soronként a 400 karaktert)	|✔️|	1 |
 | Reszponzív, mobile-first felület (minden adat látható és jól jelenik meg böngészőben is, mobil nézetben is)	|❌|	0 |
 | Legalább 2 különböző attribútum direktíva használata	|✔️|	1 |
@@ -74,5 +74,5 @@ graph TD;
 | Legalább 4 különböző route a különböző oldalak eléréséhez	|✔️|	1 |
 | Legalább 2 route levédése azonosítással (AuthGuard) (ahol ennek értelme van, pl.: egy fórum témakör megtekinthető bárki számára, de a regisztrált felhasználó adatai nem)	|✔️|	2 |
 | Szubjektív pontozás a projekt egészére vonatkozólag (mennyire fedi le a projekt a témakört (mennyire kapcsolódik hozzá), mennyi lehet a befektetett energia a projektben)	|🏖️⛵🌊|	5 |
-| **Összpontszám** | ∑ | 40 / 35,5 |
+| **Összpontszám** | ∑ | 40 / 36 |
 
