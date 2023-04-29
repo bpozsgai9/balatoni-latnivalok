@@ -1,37 +1,57 @@
-# BALATONE - Balatoni Látnivalók Applikáció
-## SZTE Webfejlesztési Keretrendszerek Nagy Beadandó 2023.
+# SZTE Webfejlesztési Keretrendszerek Nagy Beadandó 2023.
+## BALATONE - Balatoni Látnivalók Applikáció
 
-**Általános leírás:**
+### Általános leírás:
 
 Mielőtt fellépsz az oldalra a következőeket érdemes tudnod!
 
+**1. Az oldal használata regisztrációhoz kötött!** <br>
+  - Az oldal Firebase alapon autentikál és tárolja el az adatokat
 
-A projekt komponens hierarchiája a következő:
+**2. Bejelentkezés után kapsz egy általános tájékoztatót ami a következőket foglalja össze:** <br>
+  - A főoldal 3 nagy egységre van osztva (fejléc, helyszín lista, térkép)
+  - A fejlécről visszanavigálhasz a főoldalra, illetve kijelentkezni tudsz
+  - A helyszínlista helyszínnevet és helyszínt tartlamaz illetve egy szem ikont (👁️) ezzel tudsz átnavigáli a kiválasztott helyszínre
+  - A térkép egy interaktiv OpenStreetMap térkép (hasonló mint a Google Map), ezen böngészni tudsz
+  
+**3. Adott helyszínre való kattintáskor (👁️ ikon) egy újabb oldalra visz át a program** <br>
+  - Ez is 3 nagy egységre van osztva (fejléc, komment, információ)
+  - Adott helyszínhez tudsz kommentelni, módosítani, illetve törölni azt
+  - Jobb oldalt információt kapsz az adott helyszínről
+
+### Felépítés:
+
+A projekt MVVM (Model–view–viewmodel) logikát valósít meg. <br>
+A projekt komponens hierarchiája és az adatáramlások iránya a következő. <br>
+(A projekt ennél több komponenst tartlamaz, de a lényegi struktúra a következő):
+
 ```mermaid
+graph TD;
 
-    graph TD;
-    login;
-    register;
+  AuthGurad-->AppRouting;
+  AppRouting-->App;
+  
+  UserService-->Login;
+  UserService-->Register;
 
-    main-->locations;
-    main-->header;
-    header-->menu;
-
-    locations-->list;
-    locations-->map;
-
-    selectedLocation-->comment;
-    selectedLocation-->viewer;
+  LocationService-->Locations;
+  Locations<-->List;
+  Locations-->Map;
+  
+  LocationService-->SelectedLocation;
+  CommentService-->Comment;
+  SelectedLocation<-->Comment;
+  SelectedLocation-->Viewer;
 ```
 
 <br>
 
-**Hosting URL:**
+### Hosting URL:
 - https://webfejl-beadando-2023.web.app
 
 <br>
 
-**Pontozás:**
+### Saját Pontozás:
 | FELADAT | SAJÁT ÉRTÉKELÉS	| PONTSZÁM |
 | :--- | :---: | :---: |
 | Fordítási hiba nincs	| ✔️ | 1 |
