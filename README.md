@@ -57,7 +57,7 @@ graph TD;
 | Fordítási hiba nincs	| ✔️ | 1 ||
 | Futtatási hiba nincs	| ✔️ | 1 ||
 | Firebase Hosting URL (létezik, és minden végpont megfelelő módon betöltődik)	|✔️|	1 ||
-| Adatmodell definiálása | 4 DB |	2 | src/app/shared/models |
+| Adatmodell definiálása | ✔️ |	2 | src/app/shared/models |
 | Alkalmazás felbontása megfelelő számú komponensre (egyetlen komponens TS és HTML kódja sem haladja meg a 250 sort és soronként a 400 karaktert)	|✔️|	1 ||
 | Reszponzív, mobile-first felület (minden adat látható és jól jelenik meg böngészőben is, mobil nézetben is)	|❌|	0 ||
 | Legalább 2 különböző attribútum direktíva használata	|✔️|	1 | src/app/pages/locations, src/app/pages/selected-location |
