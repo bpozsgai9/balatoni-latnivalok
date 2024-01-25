@@ -68,5 +68,4 @@ graph TD;
 | Legalább 4 különböző route a különböző oldalak eléréséhez	|✔️|	1 | src/app/app-routing.module.ts |
 | Legalább 2 route levédése azonosítással (AuthGuard) (ahol ennek értelme van, pl.: egy fórum témakör megtekinthető bárki számára, de a regisztrált felhasználó adatai nem)	|✔️|	2 | src/app/app-routing.module.ts |
 | Szubjektív pontozás a projekt egészére vonatkozólag (mennyire fedi le a projekt a témakört (mennyire kapcsolódik hozzá), mennyi lehet a befektetett energia a projektben)	|🏖️⛵🌊|	5 |
-| **Összpontszám** | ∑ | 40 / 36 |
 
